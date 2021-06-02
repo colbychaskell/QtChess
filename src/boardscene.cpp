@@ -166,5 +166,3 @@ BoardScene::~BoardScene() {
         delete piece;
     }
 }
-
-
