@@ -62,7 +62,6 @@ void BoardScene::resetBoard() {
 }
 
 void BoardScene::updateBoard() {
-    std::cout << "UPDATE" << std::endl;
     std::vector<PieceQt*> tempPieces;
 
     Position square = Position(0,0);
@@ -123,8 +122,8 @@ void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
                 for(auto square : *squares) {
                     if(square->sceneBoundingRect().contains(event->scenePos()))
                         mousePosition = square->getPosition();
-                    }
-                    if(mousePosition != Position(9,9)) {
+                }
+                if(mousePosition != Position(9,9)) {
                         if(cpuPlayer.getSide() == Piece::Side::W) {
                             gameBoard.makeMove(Piece::Side::B, selectedPiece->getPosition(), mousePosition); //Try to move on underlying board
                             selectedPiece->movePiece(mousePosition); //if movable, move on the graphics scene
@@ -146,6 +145,9 @@ void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
                             std::cout << "Stalemate" << std::endl;
                         }
 
+                }
+                else {
+                    selectedPiece->movePiece(selectedPiece->getPosition());
                 }
             }
             selectedPiece = nullptr;
