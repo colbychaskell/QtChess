@@ -62,7 +62,6 @@ void BoardScene::resetBoard() {
 }
 
 void BoardScene::updateBoard() {
-    std::cout << "UPDATE" << std::endl;
     std::vector<PieceQt*> tempPieces;
 
     Position square = Position(0,0);
@@ -164,5 +163,3 @@ BoardScene::~BoardScene() {
         delete piece;
     }
 }
-
-
