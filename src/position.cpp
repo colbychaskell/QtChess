@@ -1,4 +1,5 @@
 #include "position.h"
+
 #include <sstream>
 
 bool Position::operator==(const Position& other) const {
