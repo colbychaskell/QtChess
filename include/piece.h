@@ -2,13 +2,14 @@
 #define PIECE_H
 
 #include <string>
+
 #include "position.h"
 
 /*
   Abstract Piece Class
 */
 class Piece {
-public:
+ public:
   enum Side {
     B,
     W,
@@ -20,10 +21,11 @@ public:
   Side getSide() const;
 
   virtual ~Piece();
-  virtual std::string getName() const =0;
-  virtual bool isValidMove(const Position& piece, const Position& dest) const =0;
+  virtual std::string getName() const = 0;
+  virtual bool isValidMove(const Position& piece,
+                           const Position& dest) const = 0;
 
-private:
+ private:
   Side side;
   size_t value;
 };

@@ -1,6 +1,3 @@
 #include "pieceqt.h"
 
-PieceQt::PieceQt()
-{
-
-}
+PieceQt::PieceQt() {}
