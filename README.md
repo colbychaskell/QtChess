@@ -1,9 +1,9 @@
 # QtChess
-This is a bsic chess game I created in C++ with a Qt gui.
+Basic chess game created with Qt and C++
 
-The game can be played as either white or black and has a basic computer opponent that has only a small amount of intelligence.
+Play against an intelligent computer!
 
-![alt text](https://github.com/colbychaskell/QtChess/blob/main/resources/interface.png "Basic Game Interface")
+![alt text](https://github.com/colbychaskell/QtChess/blob/main/docs/interface.png "Basic Game Interface")
 
 ## Release Notes
 

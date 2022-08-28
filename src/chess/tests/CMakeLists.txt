@@ -1,0 +1,4 @@
+set(CMAKE_AUTOMOC OFF)
+
+
+
