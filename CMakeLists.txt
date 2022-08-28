@@ -8,30 +8,19 @@ enable_testing()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
 set(CMAKE_INCLUDE_CURRENT_DIR YES)
+set(CMAKE_AUTOMOC ON)
 
-list(APPEND RESOURCES src/gui/resources.qrc)
+add_executable(${PROJECT_NAME} src/chess.cpp include/gui/mainwindow.h)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
-qt_standard_project_setup()
-
-qt_add_resources(RCC_SOURCES ${RESOURCES})
-
-file(GLOB SOURCES "src/chess/*.cpp")
-file(GLOB GUI_SOURCES "src/gui/*.cpp")
-
-add_executable(${PROJECT_NAME} ${SOURCES} ${GUI_SOURCES} ${RCC_SOURCES} include/mainwindow.h include/boardqt.h)
-
-target_include_directories(${PROJECT_NAME}
-    PRIVATE ${PROJECT_SOURCE_DIR}/include
-)
-
-target_link_libraries(${PROJECT_NAME}
-    PRIVATE Qt6::Widgets Qt6::Core
-)
+target_link_libraries(${PROJECT_NAME} PRIVATE chess)
+target_link_libraries(${PROJECT_NAME} PRIVATE gui)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE ON
     MACOSX_BUNDLE ON
 )
+
+add_subdirectory(src/chess)
+add_subdirectory(src/gui)
+add_subdirectory(libs)
