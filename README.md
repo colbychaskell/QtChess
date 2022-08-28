@@ -1,3 +1,4 @@
+![Code Format](https://github.com/colbychaskell/QtChess/actions/workflows/format.yml/badge.svg) ![CTest](https://github.com/colbychaskell/QtChess/actions/workflows/ctest.yml/badge.svg)
 # QtChess
 
 Created by [Colby Haskell](https://github.com/colbychaskell)
