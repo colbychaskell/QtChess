@@ -3,7 +3,7 @@ Basic chess game created with Qt and C++
 
 Play against an intelligent computer!
 
-![alt text](https://github.com/colbychaskell/QtChess/blob/main/docs/interface.png "Basic Game Interface")
+!["Basic Game Interface"](docs/interface.png)
 
 ## Release Notes
 
