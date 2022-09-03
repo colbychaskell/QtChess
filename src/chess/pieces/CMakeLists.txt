@@ -10,5 +10,3 @@ target_include_directories(pieces
 target_include_directories(pieces
     PUBLIC ${PROJECT_SOURCE_DIR}/include/chess
 )
-
-add_subdirectory(tests)
