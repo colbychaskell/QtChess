@@ -36,6 +36,7 @@ class Board {
   bool whiteCastleAllowed;
   bool blackCastleAllowed;
 
+  /* Helper Functions */
   size_t movePiece(const Position& pieceA,
                    const Position& pieceB);  // Move pieces in the array
   bool hasPiece(const Position& pos) const;  // Check if square has a piece

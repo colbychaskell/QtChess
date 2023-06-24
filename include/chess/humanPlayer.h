@@ -10,8 +10,7 @@ class HumanPlayer {
   void makeMove(Board& board);  // Manipulates the board if move is legal
   explicit HumanPlayer(Piece::Side side) : side(side), score(0) {}
 
-  void makeMove(Board& board, const Position& piece,
-                const Position& dest);  // used for testing
+  void makeMove(Board& board, const Position& piece, const Position& dest);
   Piece::Side getSide() const;
 
  private:
