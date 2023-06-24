@@ -14,10 +14,15 @@ std::string Rook::getName() const {
 }
 
 bool Rook::isValidMove(const Position& piece, const Position& dest) const {
-  if ((dest.column == piece.column) ^
-      (dest.row == piece.row)) {  // Horizontal/Vertical Moves
-    return true;
-  } else {
+  // Prevent the piece from moving to the same position
+  if (piece.column == dest.column && piece.row == dest.row) {
     return false;
   }
+
+  // Horizontal/Vertical Moves Only
+  if ((dest.column == piece.column) || (dest.row == piece.row)) {
+    return true;
+  }
+
+  return false;
 }

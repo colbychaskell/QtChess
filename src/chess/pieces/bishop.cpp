@@ -14,12 +14,17 @@ std::string Bishop::getName() const {
 }
 
 bool Bishop::isValidMove(const Position& piece, const Position& dest) const {
-  if ((abs(int(dest.column) - int(piece.column)) ==
-       abs(int(dest.row) - int(piece.row))) &&
-      (dest.row !=
-       piece.row)) {  // Diagonal Move if change in column == change in row
-    return true;
-  } else {
+  // Prevent the piece from moving to the same position
+  if (piece.column == dest.column && piece.row == dest.row) {
     return false;
   }
+
+  // Diagonal Moves
+  if ((abs(int(dest.column) - int(piece.column)) ==
+       abs(int(dest.row) - int(piece.row)))) {  // Diagonal Move if change in
+                                                // column == change in row
+    return true;
+  }
+
+  return false;
 }

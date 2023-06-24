@@ -14,49 +14,42 @@ std::string Pawn::getName() const {
 }
 
 bool Pawn::isValidMove(const Position& piece, const Position& dest) const {
+  // Prevent the piece from moving to the same position
+  if (piece.column == dest.column && piece.row == dest.row) {
+    return false;
+  }
+
+  // Prevent all horizontal moves
+  if (piece.row == dest.row) {
+    return false;
+  }
+
+  // Side specific checks
   if (this->getSide() == Side::W) {
-    if (piece.row == 1) {
-      if ((dest.column == piece.column) &&
-          (dest.row == piece.row + 1 ||
-           dest.row == piece.row + 2)) {  // Allow +2 on initial row
-        return true;
-      } else if ((abs(int(dest.column) - int(piece.column)) == 1) &&
-                 (int(dest.row) - int(piece.row) == +1)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else if ((dest.column == piece.column) &&
-               (dest.row ==
-                piece.row + 1)) {  // After piece has left initial row
-      return true;
-    } else if ((abs(int(dest.column) - int(piece.column)) == 1) &&
-               (dest.row - piece.row == 1)) {  // Diagonal attack
-      return true;
-    } else {
+    // Prevent backwards movement
+    if (dest.row < piece.row) {
       return false;
+    }
+
+    // Allow +2 on initial row
+    if ((piece.row == 1) && (dest.row == 3) && (piece.column == dest.column)) {
+      return true;
     }
   } else {
-    if (piece.row == 6) {
-      if ((dest.column == piece.column) &&
-          (dest.row == piece.row - 1 ||
-           dest.row == piece.row - 2)) {  // Allow +2 on initial row
-        return true;
-      } else if ((abs(int(dest.column) - int(piece.column)) == 1) &&
-                 (int(dest.row) - int(piece.row) == -1)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else if ((dest.column == piece.column) &&
-               (dest.row ==
-                piece.row - 1)) {  // After piece has left initial row
-      return true;
-    } else if ((abs(int(dest.column) - int(piece.column)) == 1) &&
-               (int(dest.row) - int(piece.row) == -1)) {  // Diagonal attack
-      return true;
-    } else {
+    // Prevent backwards movement
+    if (dest.row > piece.row) {
       return false;
     }
+
+    // Allow +2 on initial row
+    if ((piece.row == 6) && (dest.row == 4) && (piece.column == dest.column)) {
+      return true;
+    }
+  }
+
+  // Allow one square move forward or diagonal capture
+  if ((abs(int(dest.column) - int(piece.column)) <= 1) &&
+      (abs(int(dest.row) - int(piece.row)) <= 1)) {
+    return true;
   }
 }
